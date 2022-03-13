@@ -216,7 +216,16 @@ $(document).ready(function () {
             case "/":
                 result = parseFloat(buffer1) / parseFloat(buffer2);
         }
-        screen.val(result.toPrecision(10));
+
+        screen.val(result);
+
+        let numOfDecimalPlaces = screen.val().split(".")[1];
+
+        if (numOfDecimalPlaces.length > 10) {
+            screen.val(result.toPrecision(10));
+        } else {
+            screen.val(result);
+        }
     }
 
     $("#equal-sign").click(function () {
